@@ -1,9 +1,13 @@
-// for plus function
+// for iphone function
 let minus = document.getElementById("minus-button1");
 let plus = document.getElementById("plus-button1");
 let value = document.getElementById("value1");
 let newValue= parseInt((value).value);
 let iphonePrice = document.getElementById("iphone-price");
+let subtotal = document.getElementById("subtotal");
+let tax = document.getElementById("tax");
+let total = document.getElementById("total");
+
 
 plus.addEventListener("click", ()=>{
     let finalValue = newValue + 1;
@@ -11,6 +15,9 @@ plus.addEventListener("click", ()=>{
     value.value=newValue;
     let iphoneValue =newValue*1500;
     iphonePrice.innerText= iphoneValue;
+    let subTotal = subtotal.innerText = iphoneValue;
+    let totalTax = tax.innerText = iphoneValue*.15;
+    total.innerText = subTotal+totalTax
 })
 minus.addEventListener("click", ()=>{
     let finalValue = newValue - 1;
@@ -19,10 +26,16 @@ minus.addEventListener("click", ()=>{
         value.value=newValue;
         let iphoneValue =newValue*1500;
         iphonePrice.innerText= iphoneValue;
+        let subTotal = subtotal.innerText = iphoneValue;
+        let totalTax = tax.innerText = iphoneValue*.15;
+        total.innerText = subTotal+totalTax;
     } else {
         value.value=0;
         let iphoneValue =newValue*1500;
         iphonePrice.innerText= iphoneValue;
+        let subTotal = subtotal.innerText = iphoneValue;
+        let totalTax = tax.innerText = iphoneValue*.15;
+        total.innerText = subTotal+totalTax
     }
 })
 
