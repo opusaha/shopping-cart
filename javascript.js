@@ -8,7 +8,6 @@ let subtotal = document.getElementById("subtotal");
 let tax = document.getElementById("tax");
 let total = document.getElementById("total");
 
-
 plus.addEventListener("click", ()=>{
     let finalValue = newValue + 1;
     newValue=finalValue;
@@ -17,8 +16,8 @@ plus.addEventListener("click", ()=>{
     iphonePrice.innerText= iphoneValue;
     let subTotal = subtotal.innerText = iphoneValue;
     let totalTax = tax.innerText = iphoneValue*.15;
-    total.innerText = subTotal+totalTax
-    // subTotal(subTotal);
+    total.innerText = subTotal+totalTax;
+    return iphoneValue;
 })
 minus.addEventListener("click", ()=>{
     let finalValue = newValue - 1;
@@ -55,7 +54,7 @@ plus2.addEventListener("click", ()=>{
     let subTotal = subtotal.innerText = caseValue;
     let totalTax = tax.innerText = caseValue*.15;
     total.innerText = subTotal+totalTax;
-    
+   
 })
 minus2.addEventListener("click", ()=>{
     let finalValue2 = newValue2 - 1;
