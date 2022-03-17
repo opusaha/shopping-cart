@@ -18,6 +18,7 @@ plus.addEventListener("click", ()=>{
     let subTotal = subtotal.innerText = iphoneValue;
     let totalTax = tax.innerText = iphoneValue*.15;
     total.innerText = subTotal+totalTax
+    // subTotal(subTotal);
 })
 minus.addEventListener("click", ()=>{
     let finalValue = newValue - 1;
@@ -51,6 +52,10 @@ plus2.addEventListener("click", ()=>{
     value2.value=newValue2;
     let caseValue =newValue2*50
     casePrice.innerText=caseValue;
+    let subTotal = subtotal.innerText = caseValue;
+    let totalTax = tax.innerText = caseValue*.15;
+    total.innerText = subTotal+totalTax;
+    
 })
 minus2.addEventListener("click", ()=>{
     let finalValue2 = newValue2 - 1;
@@ -59,9 +64,15 @@ minus2.addEventListener("click", ()=>{
         value2.value=newValue2;
         let caseValue =newValue2*50
         casePrice.innerText=caseValue;
+        let subTotal = subtotal.innerText = caseValue;
+        let totalTax = tax.innerText = caseValue*.15;
+        total.innerText = subTotal+totalTax;
     } else {
         value2.value=0;
         let caseValue =newValue2*50
         casePrice.innerText=caseValue;
+        let subTotal = subtotal.innerText = caseValue;
+        let totalTax = tax.innerText = caseValue*.15;
+        total.innerText = subTotal+totalTax;
     }
 })
