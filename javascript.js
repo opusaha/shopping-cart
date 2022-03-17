@@ -17,7 +17,6 @@ plus.addEventListener("click", ()=>{
     let subTotal = subtotal.innerText = iphoneValue;
     let totalTax = tax.innerText = iphoneValue*.15;
     total.innerText = subTotal+totalTax;
-    return iphoneValue;
 })
 minus.addEventListener("click", ()=>{
     let finalValue = newValue - 1;
