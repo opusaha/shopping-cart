@@ -1,76 +1,49 @@
-// for iphone function
-let minus = document.getElementById("minus-button1");
-let plus = document.getElementById("plus-button1");
-let value = document.getElementById("value1");
-let newValue= parseInt((value).value);
-let iphonePrice = document.getElementById("iphone-price");
-let subtotal = document.getElementById("subtotal");
-let tax = document.getElementById("tax");
-let total = document.getElementById("total");
-
-plus.addEventListener("click", ()=>{
-    let finalValue = newValue + 1;
-    newValue=finalValue;
-    value.value=newValue;
-    let iphoneValue =newValue*1500;
-    iphonePrice.innerText= iphoneValue;
-    let subTotal = subtotal.innerText = iphoneValue;
-    let totalTax = tax.innerText = iphoneValue*.15;
-    total.innerText = subTotal+totalTax;
-})
-minus.addEventListener("click", ()=>{
-    let finalValue = newValue - 1;
-    newValue=finalValue;
-    if (newValue>=0) {
-        value.value=newValue;
-        let iphoneValue =newValue*1500;
-        iphonePrice.innerText= iphoneValue;
-        let subTotal = subtotal.innerText = iphoneValue;
-        let totalTax = tax.innerText = iphoneValue*.15;
-        total.innerText = subTotal+totalTax;
-    } else {
-        value.value=0;
-        let iphoneValue =newValue*1500;
-        iphonePrice.innerText= iphoneValue;
-        let subTotal = subtotal.innerText = iphoneValue;
-        let totalTax = tax.innerText = iphoneValue*.15;
-        total.innerText = subTotal+totalTax
+function updateProduct(product, price, isIncreasing) {
+    const productInput = document.getElementById(product + "-number");
+    let productNumber = productInput.value;
+    if (isIncreasing == true) {
+      productNumber = parseInt(productNumber) + 1;
+    } else if (productNumber > 0) {
+      productNumber = parseInt(productNumber) - 1;
     }
-})
-
-// for case function
-let minus2 = document.getElementById("minus-button2");
-let plus2 = document.getElementById("plus-button2");
-let value2 = document.getElementById("value2");
-let newValue2= parseInt((value2).value);
-let casePrice = document.getElementById("case-price");
-plus2.addEventListener("click", ()=>{
-    let finalValue2 = newValue2 + 1;
-    newValue2=finalValue2;
-    value2.value=newValue2;
-    let caseValue =newValue2*50
-    casePrice.innerText=caseValue;
-    let subTotal = subtotal.innerText = caseValue;
-    let totalTax = tax.innerText = caseValue*.15;
-    total.innerText = subTotal+totalTax;
-   
-})
-minus2.addEventListener("click", ()=>{
-    let finalValue2 = newValue2 - 1;
-    newValue2=finalValue2;
-    if (newValue2>=0) {
-        value2.value=newValue2;
-        let caseValue =newValue2*50
-        casePrice.innerText=caseValue;
-        let subTotal = subtotal.innerText = caseValue;
-        let totalTax = tax.innerText = caseValue*.15;
-        total.innerText = subTotal+totalTax;
-    } else {
-        value2.value=0;
-        let caseValue =newValue2*50
-        casePrice.innerText=caseValue;
-        let subTotal = subtotal.innerText = caseValue;
-        let totalTax = tax.innerText = caseValue*.15;
-        total.innerText = subTotal+totalTax;
-    }
-})
+    productInput.value = productNumber;
+    //   update product total
+    const productTotal = document.getElementById(product + "-total");
+    productTotal.innerText = parseInt(productNumber) * price;
+    //   calculate total
+    calculateTotal();
+  }
+  
+  function getInputValue(product) {
+    const productInput = document.getElementById(product + "-number");
+    const productNumber = parseInt(productInput.value);
+    return productNumber;
+  }
+  
+  function calculateTotal() {
+    const phoneTotal = getInputValue("phone") * 1500;
+    const caseTotal = getInputValue("case") * 60;
+    const subTotal = phoneTotal + caseTotal;
+    const tax = subTotal * .15;
+    const totalPrice = subTotal + tax;
+    //   update on the html
+    document.getElementById("sub-total").innerText = subTotal;
+    document.getElementById("tax-amount").innerText = tax;
+    document.getElementById("total-price").innerText = totalPrice;
+  }
+  // handle phone increase decrease events
+  document.getElementById("phone-plus").addEventListener("click", function () {
+    updateProduct("phone", 1500, true);
+  });
+  document.getElementById("phone-minus").addEventListener("click", function () {
+    updateProduct("phone", 1500, false);
+  });
+  // handle case increase decrease events
+  document.getElementById("case-plus").addEventListener("click", function () {
+    updateProduct("case", 60, true);
+  });
+  
+  document.getElementById("case-minus").addEventListener("click", function () {
+    updateProduct("case", 60, false);
+  });
+  
